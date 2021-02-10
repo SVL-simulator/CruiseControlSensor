@@ -40,6 +40,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4308281255233566381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 387fd4249175817408828fb57e776b8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e4d2335af3fcf44d98f5fa006511179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
+  Topic: 
+  Frame: 
+  ParentTransform: {fileID: 0}
+  CruiseSpeed: 25

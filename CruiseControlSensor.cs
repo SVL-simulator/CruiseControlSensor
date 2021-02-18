@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2019 LG Electronics, Inc.
+ * Copyright (c) 2019-2021 LG Electronics, Inc.
  *
  * This software contains code licensed as described in LICENSE.
  *
@@ -10,8 +10,6 @@ using Simulator.Bridge;
 using Simulator.Utilities;
 using Simulator.Sensors.UI;
 using System.Collections.Generic;
-using System.Collections;
-using Simulator.Analysis;
 
 namespace Simulator.Sensors
 {
@@ -30,7 +28,7 @@ namespace Simulator.Sensors
         public float BrakeInput { get; private set; } = 0f;
 
         [AnalysisMeasurement(MeasurementType.Velocity)]
-        private float MaxSpeed = 0;
+        public float MaxSpeed = 0;
 
         public override SensorDistributionType DistributionType => SensorDistributionType.LowLoad;
 

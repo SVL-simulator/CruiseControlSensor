@@ -1,7 +1,7 @@
 {
   "name": "Cruise Control Sensor",
   "accessType": "public",
-  "description": "Example of a sensor to add cruise control feature to EGO vehicle.",
+  "description": "This sensor causes the vehicle to accelerate to the desired speed and then maintain the desired speed.\nSee {{DOCS_HOST}}/docs/python-api/#cruise-control for more details.",
   "licenseName": "LG Content",
   "copyright": "LG Electronics Inc.",
   "tags": [

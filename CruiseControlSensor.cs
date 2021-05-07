@@ -20,8 +20,8 @@ namespace Simulator.Sensors
         [Range(0.0f, 200f)]
         public float CruiseSpeed = 0f;
 
-        private IVehicleDynamics dynamics;
-        private VehicleController controller;
+        private IVehicleDynamics Dynamics;
+        private IAgentController Controller;
 
         public float SteerInput { get; private set; } = 0f;
         public float AccelInput { get; private set; } = 0f;
@@ -34,20 +34,20 @@ namespace Simulator.Sensors
 
         private void Start()
         {
-            dynamics = GetComponentInParent<IVehicleDynamics>();
-            controller = GetComponentInParent<VehicleController>();
+            Dynamics = GetComponentInParent<IVehicleDynamics>();
+            Controller = GetComponentInParent<IAgentController>();
         }
 
         public void Update()
         {
-            Debug.Assert(dynamics != null);
+            Debug.Assert(Dynamics != null);
 
-            if (controller.AccelInput >= 0)
+            if (Controller.AccelInput >= 0)
             {
-                AccelInput = dynamics.RB.velocity.magnitude < CruiseSpeed ? 1f : 0f;
+                AccelInput = Dynamics.Velocity.magnitude < CruiseSpeed ? 1f : 0f;
             }
 
-            MaxSpeed = Mathf.Max(MaxSpeed, dynamics.RB.velocity.magnitude);
+            MaxSpeed = Mathf.Max(MaxSpeed, Dynamics.Velocity.magnitude);
         }
 
         public override void OnBridgeSetup(BridgeInstance bridge)
@@ -64,13 +64,13 @@ namespace Simulator.Sensors
                 {"Cruise Speed", CruiseSpeed},
                 {"Steer Input", SteerInput},
                 {"Accel Input", AccelInput},
-                {"Speed", dynamics.RB.velocity.magnitude},
-                {"Hand Brake", dynamics.HandBrake},
-                {"Ignition", dynamics.CurrentIgnitionStatus},
-                {"Reverse", dynamics.Reverse},
-                {"Gear", dynamics.CurrentGear},
-                {"RPM", dynamics.CurrentRPM},
-                {"Velocity", dynamics.RB.velocity}
+                {"Speed", Dynamics.Velocity.magnitude},
+                {"Hand Brake", Dynamics.HandBrake},
+                {"Ignition", Dynamics.CurrentIgnitionStatus},
+                {"Reverse", Dynamics.Reverse},
+                {"Gear", Dynamics.CurrentGear},
+                {"RPM", Dynamics.CurrentRPM},
+                {"Velocity", Dynamics.Velocity}
             };
             visualizer.UpdateGraphValues(graphData);
         }

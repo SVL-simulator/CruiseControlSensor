@@ -30,12 +30,18 @@ namespace Simulator.Sensors
         [AnalysisMeasurement(MeasurementType.Velocity)]
         public float MaxSpeed = 0;
 
-        public override SensorDistributionType DistributionType => SensorDistributionType.LowLoad;
+        public override SensorDistributionType DistributionType => SensorDistributionType.MainOrClient;
+        public override float PerformanceLoad { get; } = 0.05f;
 
-        private void Start()
+        protected override void Initialize()
         {
             Dynamics = GetComponentInParent<IVehicleDynamics>();
             Controller = GetComponentInParent<IAgentController>();
+        }
+
+        protected override void Deinitialize()
+        {
+            
         }
 
         public void Update()
